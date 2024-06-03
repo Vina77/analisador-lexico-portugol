@@ -28,7 +28,7 @@ public class AnalisadorLexico {
     private static final int T_FIM_ARQUIVO = 99;
 
     // Tabela de palavras reservadas
-    private static final Map<String, Integer> palavrasReservadas = new HashMap<>();
+    static final Map<String, Integer> palavrasReservadas = new HashMap<>();
     static {
         palavrasReservadas.put("inicio", T_INICIO);
         palavrasReservadas.put("fim_se", T_FIM_SE);

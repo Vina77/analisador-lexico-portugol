@@ -1,6 +1,5 @@
 package dev.ceub.analisador.lexico.portugol;
 
-
 public class Main {
     public static void main(String[] args) {
         String codigo = """
@@ -18,13 +17,14 @@ public class Main {
         AnalisadorLexico lexico = new AnalisadorLexico(codigo);
         Token token;
 
-        System.out.printf("%-10s %-15s %-10s\n", "Código", "Lexema", "Posição");
-        System.out.println("----------------------------------------");
+        System.out.printf("%-10s %-15s %-10s %-20s\n", "Código", "Lexema", "Posição", "Descrição");
+        System.out.println("-----------------------------------------------------------");
 
         do {
             token = lexico.proximoToken();
             if (token != null) {
-                System.out.printf("%-10d %-15s %-10d\n", token.getCodigo(), token.getLexema(), token.getPosicao());
+                String descricao = Descricao.getDescricao(token);
+                System.out.printf("%-10d %-15s %-10d %-20s\n", token.getCodigo(), token.getLexema(), token.getPosicao(), descricao);
             }
         } while (token == null || token.getCodigo() != 99);
     }
