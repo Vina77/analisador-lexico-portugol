@@ -1,4 +1,4 @@
-package dev.ceub.analisador.lexico.portugol;
+package projeto.analisador;
 
 public class Token {
     private int codigo;
