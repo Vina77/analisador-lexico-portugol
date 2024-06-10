@@ -17,3 +17,14 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'dev.ceub.analisador.lexico.portugol.Main' // Replace with your main class
+        )
+    }
+    from {
+        configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}

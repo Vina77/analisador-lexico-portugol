@@ -1,24 +1,33 @@
 package dev.ceub.analisador.lexico.portugol;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) {
-        String codigo = """
-                inicio
-                    inteiro:b;
-                    inteiro:c;
-                    imprima("digite um valor para c:");
-                    leia(c);
-                    para b=0 até c passo 2
-                        imprima(b);
-                    fim_para
-                fim
-                """;
+        // if (args.length == 0) {
+        //     System.out.println("Nenhum arquivo foi informado");
+        //     return;
+        // }
 
+        // String nomeArquivo = args[0];
+        String nomeArquivo = "codigo_exemplo.prtgl";
+        String codigo;
+        try {
+            codigo = Files.readString(Paths.get(nomeArquivo), StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            System.out.println("Erro ao ler o arquivo: " + e.getMessage());
+            return;
+        }
+
+        // Fim da linha do código
+        codigo = codigo + "\0";
         AnalisadorLexico lexico = new AnalisadorLexico(codigo);
         Token token;
 
-        System.out.printf("%-10s %-15s %-10s\n", "Código", "Lexema", "Posição");
+        System.out.printf("%-10s %-25s %-10s\n", "Código", "Lexema", "Posição");
         System.out.println("----------------------------------------");
 
         do {
