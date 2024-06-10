@@ -7,13 +7,12 @@ import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) {
-        // if (args.length == 0) {
-        //     System.out.println("Nenhum arquivo foi informado");
-        //     return;
-        // }
+        if (args.length == 0) {
+            System.out.println("Nenhum arquivo foi informado");
+            return;
+        }
 
-        // String nomeArquivo = args[0];
-        String nomeArquivo = "codigo_exemplo.prtgl";
+        String nomeArquivo = args[0];
         String codigo;
         try {
             codigo = Files.readString(Paths.get(nomeArquivo), StandardCharsets.UTF_8);
